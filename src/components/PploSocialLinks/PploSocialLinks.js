@@ -10,7 +10,12 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 const useStyles = makeStyles({
   root: {
     width: 500,
+    borderBottom:'1px solid #9c9c9c',
+    "&& button.Mui-selected":{
+        borderBottom:'1px solid #3e56b6',
+    },
   },
+
 });
 
 export default function PploSocialLinks() {
@@ -23,7 +28,7 @@ export default function PploSocialLinks() {
 
   return (
     <BottomNavigation value={value} onChange={handleChange} className={classes.root} showLabels>
-      <BottomNavigationAction label="Audience" value="audience" icon={<PeopleAltIcon />} />
+      <BottomNavigationAction  label="Audience" value="audience" icon={<PeopleAltIcon />} />
       <BottomNavigationAction label="Notifications" value="notifications" icon={<NotificationsIcon />} />
       <BottomNavigationAction label="Social" value="Social" icon={<ChatBubbleIcon />} />
       <BottomNavigationAction label="Campagins" value="campagins" icon={<MicIcon />} />

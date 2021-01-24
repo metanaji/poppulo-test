@@ -1,7 +1,15 @@
-import React,{useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+    h1:{
+    color:"#042e54",
+    },
+  dropWrapper:{
+    background:"#E5E5E5",
+  },
+  dropzoneParagraphClass:{
+  fontSize:"14px",
+  },
   root: {
     flexGrow: 1,
   },
@@ -26,9 +34,14 @@ const useStyles = makeStyles((theme) => ({
  }
  },
  additionalInfo:{
-    background: 'rgba(0, 0, 0, 0.09)',
+    background: '#E5E5E5',
      padding:theme.spacing(3),
      margin:theme.spacing(4,0),
+     color:'#404447',
+ },
+ attachIcon:{
+    verticalAlign: 'middle',
+    marginRight:'4px',
  },
 }));
 

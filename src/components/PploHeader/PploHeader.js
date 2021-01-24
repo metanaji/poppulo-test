@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,54 +10,15 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import HelpIcon from '@material-ui/icons/Help';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { ReactComponent as Logo } from "../../poppulo-logo.svg";
+import logo from './logo.gif';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import {
   NavLink 
 } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  grow: {
-    flexGrow: 1,
-  },
-  floatRight:{float:'right', fontSize:'12px'},
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
-  appBarStyling:{
-   boxShadow: 'none',
-   backgroundColor:'#00325a',
-   padding:'0',
-   margin:'0',
-  },
-   topMenu:{
-    listStyle:'none',
-    margin:'0',
-    padding:'0',
-     "& >li" :{
-        display:'inline-block',
-        margin:theme.spacing(0,1,0,1),
-        padding:'0',
-        "& >a" :{
-        color:'#fff',
-        textDecoration:'none',
-        height:'64px',
-        display:'box',
-        boxAlign: 'center',
-        padding:theme.spacing(0,2,0,2),
-        },
-         "& >a.active": {
-            backgroundColor: '#3cdcd2',
-            color:'#00325a',
-         },
-    },
-  },
- 
-}));
+import PploHeaderCss from "./PploHeaderCss";
 
 export default function PploHeader() {
-  const classes = useStyles();
+  const classes = PploHeaderCss();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -124,6 +84,8 @@ export default function PploHeader() {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBarStyling}>
         <Toolbar >
+            <NavLink exact to="/" activeClassName="active"><img src={logo} /></NavLink>
+
           <div>
             <ul className={classes.topMenu}>
               <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
@@ -138,10 +100,12 @@ export default function PploHeader() {
             <IconButton color="inherit">
              <HelpIcon/>
              <span className={classes.floatRight}>Help</span>
+             <ArrowDropDownIcon />
             </IconButton>
             <IconButton color="inherit">
             <SettingsIcon />
             <span className={classes.floatRight}>Account Name</span>
+            <ArrowDropDownIcon />
             </IconButton>
             <IconButton
               edge="end"
@@ -153,6 +117,7 @@ export default function PploHeader() {
             >
               <AccountCircle />
               <span onClick={handleProfileMenuOpen} className={classes.floatRight}>Username</span>
+              <ArrowDropDownIcon />
             </IconButton>
           </div>
         </Toolbar>

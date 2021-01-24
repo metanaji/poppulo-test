@@ -1,6 +1,4 @@
 import React,{useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import PplTextField from "../PplTextField/PplTextField";
 import PploSocialLinks from "../PploSocialLinks/PploSocialLinks";
@@ -9,9 +7,10 @@ import PploCheckBox from "../PploCheckBox/PploCheckBox";
 import PploButton from "../PploButton/PploButton";
 import { useForm } from "react-hook-form";
 import useStyles from './PploMobileCss.js';
-function handleChange(files){
+import AttachmentIcon from '@material-ui/icons/Attachment';
 
- }
+const handleChange = (files) => console.log('Files:', files)
+
 function PplMobile() {
 const { register, handleSubmit, errors } = useForm();
 const [formData, setFormData] = useState({});
@@ -23,7 +22,7 @@ const classes = useStyles();
     <div className={classes.root}>
 
     <div className={classes.pageWrapper}>
-        <h1>Create new Post</h1>
+        <h1 className={classes.h1}>Create new Post</h1>
 
        <Grid container>      
         <Grid item xs={7}>
@@ -42,10 +41,13 @@ const classes = useStyles();
         </Grid>
         <Grid item xs={5} className={classes.rightCol}>
         <DropzoneArea
-        dropzoneText="Drag a file here Choose from Media Library or Browse(jpg,png,gif)"
+        dropzoneText="Drop a file here Choose from Media Library or Browse(jpg,png,gif)"
         onChange={handleChange}
+        dropzoneClass={classes.dropWrapper}
+        dropzoneParagraphClass={classes.dropzoneParagraphClass}
+        filesLimit={3}
         />
-        <div className={classes.additionalInfo}><span>Drop up to 3 pdfs or click to browse</span></div>
+        <div className={classes.additionalInfo}><span className={classes.attachIcon}><AttachmentIcon color="#757575" /></span><span>Drop up to 3 pdfs or click to browse</span></div>
           <PploSocialLinks/>
         </Grid>
       </Grid>
